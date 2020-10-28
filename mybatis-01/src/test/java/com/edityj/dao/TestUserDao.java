@@ -5,6 +5,7 @@ import com.edityj.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class TestUserDao {
@@ -44,13 +45,18 @@ public class TestUserDao {
   public void updateUser() {
     final SqlSession session = MyBatisUtil.getSession();
     final UserDao mapper = session.getMapper(UserDao.class);
-    mapper.updateUser(new User(4, "你好哇", "333333"));
+
+    final HashMap<String, Object> user = new HashMap<String, Object>();
+    user.put("name", "修改后的名字");
+    user.put("userid", 3);
+    mapper.updateUser(user);
+
     session.commit();
     session.close();
   }
 
   @Test
-  public void deleteUser(){
+  public void deleteUser() {
     final SqlSession session = MyBatisUtil.getSession();
     final UserDao mapper = session.getMapper(UserDao.class);
     mapper.deleteUser(4);

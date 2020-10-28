@@ -3,6 +3,7 @@ package com.edityj.dao;
 import com.edityj.pojo.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserDao {
   List<User> getList();
@@ -11,7 +12,7 @@ public interface UserDao {
 
   int insertUser(User user);
 
-  int updateUser(User user);
+  int updateUser(Map<String, Object> user);
 
   int deleteUser(int id);
 }
