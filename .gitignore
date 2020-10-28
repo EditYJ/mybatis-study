@@ -2,3 +2,5 @@
 # Project exclude paths
 /mybatis-01/target/
 /mybatis-02/target/
+
+*.log
