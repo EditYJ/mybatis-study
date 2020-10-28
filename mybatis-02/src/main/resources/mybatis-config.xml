@@ -12,8 +12,9 @@
   </settings>
 
   <typeAliases>
-    <typeAlias type="com.edityj.pojo.User" alias="user"/>
-<!--    <package name="com.edityj.pojo"/>-->
+<!--    <typeAlias type="com.edityj.pojo.User" alias="user"/>-->
+<!--    <typeAlias type="com.edityj.pojo.Teacher" alias="teacher"/>-->
+    <package name="com.edityj.pojo"/>
   </typeAliases>
 
   <environments default="development">
@@ -29,6 +30,7 @@
   </environments>
 
   <mappers>
-    <mapper resource="com/edityj/dao/UserMapper.xml"/>
+<!--    <mapper resource="com/edityj/dao/UserMapper.xml"/>-->
+    <package name="com.edityj.dao"/>
   </mappers>
 </configuration>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edityj.dao.StudentMapper">
+  <resultMap id="StudentTeacher" type="student">
+    <result property="id" column="sid"/>
+    <result property="name" column="sname"/>
+    <association property="teacher" javaType="Teacher">
+      <result property="name" column="tname"/>
+    </association>
+  </resultMap>
+  <select id="getStudentById" parameterType="_int" resultMap="StudentTeacher">
+    select s.id as sid, s.name as sname, t.name as tname
+    from student s
+           left join teacher t on t.id = s.tid
+    where s.id = #{id};
+  </select>
+
+  <resultMap id="StudentTeacher2" type="student">
+    <result property="id" column="sid"/>
+    <result property="name" column="sname"/>
+    <association property="teacher" javaType="Teacher">
+      <result property="id" column="tid"/>
+      <result property="name" column="tname"/>
+    </association>
+  </resultMap>
+  <select id="getStudentById2" parameterType="_int" resultMap="StudentTeacher2">
+    select s.id as sid, s.name as sname, t.id as tid, t.name as tname
+    from student s
+           left join teacher t on t.id = s.tid
+    where s.id = #{id};
+  </select>
+
+<!--  嵌套查询-->
+  <resultMap id="StudentTeacher3" type="student">
+    <result property="id" column="id"/>
+    <result property="name" column="name"/>
+    <association property="teacher" column="tid" javaType="teacher" select="getTeacher"/>
+  </resultMap>
+  <select id="getStudentById3" parameterType="_int" resultMap="StudentTeacher3">
+    select *
+    from student
+    where id = #{id}
+  </select>
+  <select id="getTeacher" parameterType="_int" resultType="teacher">
+    select *
+    from teacher
+    where id = #{tid}
+  </select>
+</mapper>
