@@ -13,11 +13,11 @@
   </select>
 
   <insert id="insertUser" parameterType="com.edityj.pojo.User">
-    insert into `user` (`id`, `username`, `password`) values (#{id},#{username},#{password});
+    insert into `user` (`id`, `name`, `password`) values (#{id},#{name},#{password});
   </insert>
 
   <update id="updateUser" parameterType="map">
-    update `user` set username=#{name} where id=#{userid};
+    update `user` set name=#{name} where id=#{userid};
   </update>
 
   <delete id="deleteUser" parameterType="int">

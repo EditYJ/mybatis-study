@@ -2,12 +2,12 @@ package com.edityj.pojo;
 
 public class User {
   private int id;
-  private String username;
+  private String name;
   private String password;
 
-  public User(int id, String username, String password) {
+  public User(int id, String name, String password) {
     this.id = id;
-    this.username = username;
+    this.name = name;
     this.password = password;
   }
 
@@ -22,12 +22,12 @@ public class User {
     this.id = id;
   }
 
-  public String getUsername() {
-    return username;
+  public String getName() {
+    return name;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public String getPassword() {
@@ -42,7 +42,7 @@ public class User {
   public String toString() {
     return "User{" +
         "id=" + id +
-        ", username='" + username + '\'' +
+        ", name='" + name + '\'' +
         ", password='" + password + '\'' +
         '}';
   }
